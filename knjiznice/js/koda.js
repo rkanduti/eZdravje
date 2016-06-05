@@ -33,11 +33,7 @@ function init(oseba) {
         }
     });
 }
-/**
- * Prijava v sistem z privzetim uporabnikom za predmet OIS in pridobitev
- * enolične ID številke za dostop do funkcionalnosti
- * @return enolični identifikator seje za dostop do funkcionalnosti
- */
+
 function getSessionId() {
     var response = $.ajax({
         type: "POST",
@@ -48,15 +44,6 @@ function getSessionId() {
     return response.responseJSON.sessionId;
 }
 
-
-/**
- * Generator podatkov za novega pacienta, ki bo uporabljal aplikacijo. Pri
- * generiranju podatkov je potrebno najprej kreirati novega pacienta z
- * določenimi osebnimi podatki (ime, priimek in datum rojstva) ter za njega
- * shraniti nekaj podatkov o vitalnih znakih.
- * @param stPacienta zaporedna številka pacienta (1, 2 ali 3)
- * @return ehrId generiranega pacienta
- */
 var osnovni = [
                 {   
                     'ehrId': '1e70cd10-866e-4e43-b729-79a449951f85',
@@ -270,6 +257,7 @@ function generirajPod(ime, priimek, spol, datum, status, temp) {
     $("#izbor").show();
     $("#izbor1").trigger("click");
 }
+
 var ime, spl, datR;
 
 function prikaziEhr(ehrId) {
@@ -298,7 +286,7 @@ function prikazi(ehrId) {
             spl = party.gender == 'MALE' ? 'Moški' : 'Ženska';
             datR = formatDatum(party.dateOfBirth);
             EHRID = ehrId;
-            prikazPodatki(ime, spl, datR, EHRID);
+            prikazPodatki(ime, datR, spl, EHRID);
         }
     });
     $(".prikazPacienta").show();
@@ -725,7 +713,7 @@ function prikazTlak() {
 }
 
 function prikazP() {
-    prikazPodatki(ime, spl, datR, EHRID);
+    prikazPodatki(ime, datR, spl, EHRID);
 }
 
 function prikazPodatki(ime, datum, spol, ehr) {
@@ -786,9 +774,8 @@ function showError(error) {
             break;
     }
 }
-var map;
-var service;
-var infowindow;
+
+var map, service, infowindow;
 
 function pokaziNaMapi(lat, long, tip) {
     if(lat == null)
