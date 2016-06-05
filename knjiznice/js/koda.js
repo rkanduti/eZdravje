@@ -753,9 +753,9 @@ var infowindow;
 
 function pokaziNaMapi(lat, long, tip) {
     if(lat == null)
-        lat = '46.051454';
+        lat = parseFloat('46.051454');
     if(long == null)
-        long = '14.506023';
+        long = parseFloat('14.506023');
 
     $("#vsebina").empty();
     $("#vsebina").append('<div class="col-lg-12" id="podMapPar"></div>');
