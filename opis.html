@@ -22,7 +22,7 @@
           <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
         </button>
         <!-- ZAČETEK: Ime vaše aplikacije -->
-        <a class="navbar-brand" href="index.html">{ime vaše aplikacije}</a>
+        <a class="navbar-brand" href="index.html">ZDRAUkŽVAU</a>
         <!-- KONEC: Ime vaše aplikacije -->
       </div>
       <div class="collapse navbar-collapse" id="menujska-vrstica">
@@ -44,9 +44,9 @@
             <h3 class="panel-title">Opis ideje, ki jo aplikacija podpira</h3>
           </div>
           <div class="panel-body">
-            <!-- ZAČETEK: Opis ideje, ki jo aplikacija podpira -->
-            <p><strong>TO-DO</strong>: Na tem mestu je potrebno dodati <strong>osnovni opis ideje rešitve</strong> (kakšen je osnovni SCENARIJ UPORABE, KDO je ciljna publika, za kakšen NAMEN se aplikacija uporablja).</p><p class="text-muted">Opis naj ne bo daljši od 200 besed.</p>
-            <!-- KONEC: Opis ideje, ki jo aplikacija podpira -->
+            <p>Aplikacija <strong>ZDRAUkŽVAU</strong> je namenjena tako navadnim uporabnikom, kot zdravnikom. Z uporabljeno vizualizacijo podatkov je možno razbrati trend vitalnih znakov npr. naraščanje ITM-ja, ki posledično vpliva tudi na povišan pritisk, utrip in vsebnost kisika v krvi. S preventivnim ukrepanjem je tako možno preprečiti bolezni.</p>
+            <p>Na začetku si uporabnik izbere osebo za katero bi si rad ogledal vitalne znake (v primeru navadnega uporabnika bi bilo treba omejiti pogled samo na njegove podatke). Nato se mu prikaže stran z osebnimi podatki. Nad njimi je skupina gumbov, ki skrbi za preklapnjanje med grafi, ki prikazujejo stanje in opozarjajo na kritična stanja.</p>
+            <p>Za navadnega uporabnika je implementirana tudi karta bližnjih priporočenih lokacij glede na njihov ITM, npr. v primeru povišanega indeksa, aplikacija priporoča obisk zdravnika, ki bo svetoval kako ukrepati in priporočal način življenja, da ne pride do resnejših težav.</p>
           </div>
         </div>
         <div class="panel panel-default">
@@ -54,9 +54,8 @@
             <h3 class="panel-title">Uporabljeni zunanji viri podatkov</h3>
           </div>
           <div class="panel-body">
-            <!-- ZAČETEK: Uporabljeni zunanji viri podatkov -->
-            <p><strong>TO-DO</strong>: Na tem mestu je navesti zunanji vir podatkov (URL naslov), na kakšen način ste ga uporabili (neposredni API klic, uvožena statična datoteka ipd.) in kaj je bil namen uporabe (kako se vključuje v osnovno idejo aplikacije).</p>
-            <!-- KONEC: Uporabljeni zunanji viri podatkov -->
+            <p><strong>V aplikacijo sem vključil en zunanji vir podatkov.</strong></p>
+            <p><a href="https://developers.google.com/maps/">Google Maps</a>, ki sem jih uporabil za prikaz priporočenih lokacij glede na izračunan ITM. V primeru previsokega ITM-ja je priporočen obisk zdravnika, normalnem obisk športnih objektov in v primeru prenizkega obisk restavracije.</p>
           </div>
         </div>
         <div class="panel panel-default">
@@ -64,9 +63,7 @@
             <h3 class="panel-title">Master/detail načrtovalski vzorec</h3>
           </div>
           <div class="panel-body">
-            <!-- ZAČETEK: Master/detail načrtovalski vzorec -->
-            <p><strong>TO-DO</strong>: Na tem mestu morate navesti uporabljen master/detail načrtovalski vzorec in na kakšen način ga nameravate uporabiti.</p>
-            <!-- KONEC: Master/detail načrtovalski vzorec -->
+            <p>Kot master/detail načrtovalski vzorec sem implementiral seznam pacientov. Ob kliku na izbranega pacienta se prvo prikažejo njegovi osebni podatki. Nad podatki je tudi vrstica z gumbi, ki nam omogoča vizualizacijo vitalnih znakov.</p>
           </div>
         </div>
         <div class="panel panel-default">
@@ -74,9 +71,7 @@
             <h3 class="panel-title">Uporabljena tehnika za vizualizacijo podatkov</h3>
           </div>
           <div class="panel-body">
-            <!-- ZAČETEK: Uporabljeni zunanji viri podatkov -->
-            <p><strong>TO-DO</strong>: Na tem mestu je potrebno navesti uporabljeno tehniko vizualizacije podatkov (za pomoč lahko uporabite primer iz <a href="https://github.com/mbostock/d3/wiki/Gallery" target="_blank">D3.js galerije</a>) in zakaj je bila ta tehnika izbrana.</p>
-            <!-- KONEC: Uporabljeni zunanji viri podatkov -->
+            <p>Za vizulizacijo sem uporabil več različnih grafov iz knjižnjice <a href="http://www.fusioncharts.com/">FusionCharts</a>, ki omogoča prikazovanje enostavnih grafov. Na grafih sem prikazal tudi območja v katerih so vitalni znaki izven normalnih vrednosti in tako še olajšal preglednost.</p>
           </div>
         </div>
       </div>

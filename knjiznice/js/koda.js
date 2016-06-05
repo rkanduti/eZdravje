@@ -81,6 +81,18 @@ var osnovni = [
                         'teza': 29.5,
                         'visina': 104.2
                     }
+                },
+                {   
+                    'ehrId': '8972a0d4-6639-46ff-a2ad-17d0df739273',
+                    'sex': 'FEMALE',
+                    'firstName': 'Abigail',
+                    'lastName': 'Sapers',
+                    'dateOfBirth': '1997-10-16T18:43',
+                    'state': 'underweight',
+                    'osn': {
+                        'teza': 16.3,
+                        'visina': 100.2
+                    }
                 }
             ]
  
@@ -115,7 +127,6 @@ function generirajVitalne(ehrId, state, pod) {
         }
     }
     else if(state == 'obese') {
-        var visina = 155;
         var date = new Date(2000, 03, 05, 12, 45, 00, 00);
         
         for(var i = 0; i < 30; i++) {
@@ -130,6 +141,28 @@ function generirajVitalne(ehrId, state, pod) {
 			podatki["sistolicni"] = (Math.random() * 30 | 0) + 140;
 			podatki["diastolicni"] = (Math.random() * 10 | 0) + 95;
 			podatki["pulz"] = (Math.random() * 10 | 0) + 95;
+			podatki["datum"] = date.toISOString();
+			
+			vstaviVBazo(podatki, ehrId);
+			
+			date = spremeniDatum(date, 180);
+        }
+    }
+    else if(state == 'underweight') {
+        var date = new Date(2001, 02, 06, 16, 00, 00, 00);
+        
+        for(var i = 0; i < 28; i++) {
+            var podatki = {};
+            pod.osn.teza = (parseFloat(pod.osn.teza) + ((Math.random() * 1.6))).toFixed(1);
+            pod.osn.visina = (parseFloat(pod.osn.visina) + ((Math.random() * 4))).toFixed(1);
+            
+            podatki['visina'] = pod.osn.visina;
+            podatki['teza'] = pod.osn.teza;
+            podatki['temperatura'] = ((Math.random() * 13  | 0) / 10 + 36.5).toFixed(1);
+			podatki["kisik"] = ((Math.random() * 10 | 0) + 90);
+			podatki["sistolicni"] = (Math.random() * 30 | 0) + 90;
+			podatki["diastolicni"] = (Math.random() * 10 | 0) + 65;
+			podatki["pulz"] = (Math.random() * 10 | 0) + 70;
 			podatki["datum"] = date.toISOString();
 			
 			vstaviVBazo(podatki, ehrId);
@@ -731,7 +764,13 @@ function showPosition(position) {
 }
 
 function showError(error) {
-    pokaziNaMapi(null, null);
+    var itm = (parseFloat(weight[0].weight) / Math.pow(parseFloat(height[0].height)/100, 2)).toFixed(1);
+    if(itm < 20)
+        pokaziNaMapi(null, null, 'restaurant');
+    else if(itm < 40)
+        pokaziNaMapi(null, null, 'stadium');
+    else
+        pokaziNaMapi(null, null, 'hospital');
     switch(error.code) {
         case error.PERMISSION_DENIED:
             console.log("User denied the request for Geolocation.");
